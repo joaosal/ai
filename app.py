@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Set up Vectara API client
-client = vectara.Client(
+client = vectara.Vectara(
     customer_id=os.getenv('CUSTOMER_ID'),    # Replace with your Vectara Customer ID
     corpus_id='3',        # Replace with your Vectara Corpus ID
     api_key=os.getenv('VECTARA_API_KEY')  # Store your API key in environment variables
