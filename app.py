@@ -27,8 +27,8 @@ def chat():
 
     print(response)
 
-    if response and response.results:
-        reply = response.results[0].text
+    if response and response.responseSet[0]:
+        reply = response.response[0].text
     else:
         reply = "I'm not sure how to respond to that."
 
