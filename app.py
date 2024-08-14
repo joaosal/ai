@@ -25,6 +25,8 @@ def chat():
     # Query Vectara
     response = client.query(3, user_message)
 
+    print(response)
+
     if response and response.results:
         reply = response.results[0].text
     else:
