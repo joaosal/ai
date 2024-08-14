@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify, render_template
-import vectara
+from vectara import VectaraClient
 import os
 
 app = Flask(__name__)
 
 # Set up Vectara API client
-client = vectara.Vectara(
+client = VectaraClient(
     customer_id=os.getenv('CUSTOMER_ID'),    # Replace with your Vectara Customer ID
     corpus_id='3',        # Replace with your Vectara Corpus ID
     api_key=os.getenv('VECTARA_API_KEY')  # Store your API key in environment variables
@@ -22,11 +22,11 @@ def chat():
     if not user_message:
         return jsonify({'reply': "I didn't receive any message!"})
 
-    # Vectara API request
+    # Query Vectara
     response = client.query(user_message)
 
-    if response and response.responses:
-        reply = response.responses[0].text
+    if response and response.results:
+        reply = response.results[0].text
     else:
         reply = "I'm not sure how to respond to that."
 
